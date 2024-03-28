@@ -1,43 +1,50 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import axios from 'axios';
 
 const GlassForm = () => {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [userType, setUserType] = useState('employee');
 
   const handleLogin = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
-  
+
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-  
+
     // Create a JSON object with the user data
     const userData = {
       username: username,
       password: password,
-      userType: userType
+      role: userType
     };
-  
+
     // Send the user data to the backend using fetch
     try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
+      const response = await axios.post('http://localhost:3001/users/login', userData, {
         headers: {
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userData)
+        }
       });
-  
-      if (response.ok) {
-        console.log('Login successful!');
+
+      // const response = await fetch('http://localhost:3001/users/login', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(userData)
+      // });
+
+      if (response.data.ok==true) {
+        console.log("Logged In");
         setIsOpen(false); // Close the form after login attempt
       } else {
-        console.log('Login failed!');
+        console.log("Login Failed");
       }
     } catch (error) {
       console.error('Error during login:', error);
     }
   };
-  
+
 
   const handleUserTypeChange = (event) => {
     setUserType(event.target.value);
@@ -55,10 +62,10 @@ const GlassForm = () => {
         <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
           <div className="rounded-lg shadow-2xl shadow-teal-600 shadowbg-opacity-70 backdrop-blur-sm border border-teal-600 px-20 py-20">
             <h2 className="text-3xl text-white font-medium mb-2">Login <button className="absolute top-3 right-3 text-white text-2xl leading-none hover:text-teal-200"
-        onClick={() => setIsOpen(false)}
-      >
-        &times;
-      </button></h2>
+              onClick={() => setIsOpen(false)}
+            >
+              &times;
+            </button></h2>
             <div className="form-group text-white mb-3">
               <label htmlFor="username">Username:</label>
               <input
