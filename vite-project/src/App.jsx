@@ -1,10 +1,70 @@
+// import { useState } from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+// import './App.css'
+// import Sidebar from './componets/Sidebar'
+// import Layout from './componets/Layout'
+// import Product from './componets/Products'
+// import Customer from './componets/Customer'
+// import AddProductForm from './componets/Addproduct'
+// import Employee from './componets/Employee'
+// import Branch from './componets/Branch'
+// import Login from './componets/Login'
+// import Sales from './componets/Sales'
+// import ELayout from './employcomponets/Elayout'
+// import EHeader from './employcomponets/Eheader'
+// import ESidebar from './employcomponets/Esidebar'
+
+
+// function App() {
+//   const [count, setCount] = useState(0)
+
+//   // return (
+
+
+//   /* <Login  /> */
+
+//   /* THIS IS FOR ADIMIN */
+//   if (true) {
+
+//   } else {
+//     return (
+//       <ELayout> {/* // THIS IS FOR EMPLOYEE */}
+//         <Routes>
+//           <Route path='/Products' element={<Product />} />
+
+//           <Route path='/Customer' element={<Customer />}></Route>
+
+
+//           <Route path='/Sales' element={<Sales />} />
+//         </Routes>
+
+//       </ELayout>)
+
+//   }
+
+
+
+
+//   // )
+// }
+
+// function Example() {
+//   return (
+//     <div>wtf</div>
+//   )
+// }
+
+// export default App
+
+
 import './App.css';
 import React, { useState } from 'react'
 import Spline from '@splinetool/react-spline';
 import EmployeeRoutes from './Pages/EmployeeRoutes';
 import AdminRoutes from './Pages/AdminRoutes';
 import { Routes, Route } from 'react-router-dom'
-import GlassForm from './componets/GlassForm'
+import GlassCardForm from './componets/GlassCardForm'
 import { ReactTyped } from 'react-typed';
 // import { Routes, Route } from 'react-router-dom'
 import RoleToggle from './componets/RoleToggle';
@@ -36,7 +96,7 @@ function Home() {
           <a href="#" className="text-white mr-8 hover:text-teal-400 ">Home</a>
           <a href="#" className="text-white mr-8 hover:text-teal-400 ">Contacts</a>
           <a href="#" className="text-white mr-8 hover:text-teal-400 ">About Us</a>
-          <GlassForm isOpen={isOpen} setIsOpen={setIsOpen} />
+          <GlassCardForm isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
       </nav>
       <div className="h-screen flex">

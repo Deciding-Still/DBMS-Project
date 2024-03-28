@@ -18,10 +18,10 @@ const Esidebar = ({ modalRef }) => {
         { name: "Sales", icon: "home.png", id: 1 },
         { name: "Products", icon: "products.png", id: 2 },
         { name: "Customer", icon: "delivery.png", id: 3 },
-     
+
         { name: "Discounts", icon: "discounts.png", id: 4 },
 
-      
+
 
     ];
 
@@ -62,7 +62,7 @@ const Esidebar = ({ modalRef }) => {
                     {companyTabs.map((tab) => {
                         return (
                             <Link
-                                to={`/${(tab.name)}`}
+                                to={`./${(tab.name)}`}
                                 key={tab.id}
                                 className={`${sidebarStyles.tabItem} `}>
                                 <div className={sidebarStyles.tabIcon}>
@@ -78,7 +78,7 @@ const Esidebar = ({ modalRef }) => {
                 </div>
             </div>
 
-                {/* <div className={sidebarStyles.availableCreditsLeft}>
+            {/* <div className={sidebarStyles.availableCreditsLeft}>
                     <div className={sidebarStyles.walletIcon}>
                         <img src="wallet.png" alt="" />
                     </div>
@@ -93,7 +93,7 @@ const Esidebar = ({ modalRef }) => {
                         222.10
                     </div>
                 </div> */}
-           
+
         </div>
     );
 }

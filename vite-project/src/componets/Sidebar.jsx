@@ -65,7 +65,7 @@ const Sidebar = ({ modalRef }) => {
                     {companyTabs.map((tab) => {
                         return (
                             <Link
-                                to={`/${(tab.name)}`}
+                                to={`./${(tab.name)}`}
                                 key={tab.id}
                                 className={`${sidebarStyles.tabItem} `}>
                                 <div className={sidebarStyles.tabIcon}>
@@ -81,7 +81,7 @@ const Sidebar = ({ modalRef }) => {
                 </div>
             </div>
 
-                {/* <div className={sidebarStyles.availableCreditsLeft}>
+            {/* <div className={sidebarStyles.availableCreditsLeft}>
                     <div className={sidebarStyles.walletIcon}>
                         <img src="wallet.png" alt="" />
                     </div>
@@ -96,7 +96,7 @@ const Sidebar = ({ modalRef }) => {
                         222.10
                     </div>
                 </div> */}
-           
+
         </div>
     );
 }

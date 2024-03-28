@@ -26,4 +26,4 @@ const RoleToggle = ({ onSelectRole }) => {
   );
 };
 
-export default RoleToggle;
+export default RoleToggle;
