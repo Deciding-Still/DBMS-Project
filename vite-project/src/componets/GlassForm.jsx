@@ -37,6 +37,7 @@ const GlassForm = () => {
       if (response.data.ok==true) {
         console.log("Logged In");
         setIsOpen(false); // Close the form after login attempt
+        window.location = "http://localhost:5173/admin";
       } else {
         console.log("Login Failed");
       }
