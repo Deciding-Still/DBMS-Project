@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const Sidebar = ({ modalRef }) => {
     const companyDetails = {
         companyName: "XYZ Stores",
-        companyThumbnail: "./src/assets/storefront_FILL0_wght400_GRAD0_opsz24.png",
+        companyThumbnail: "../src/assets/storefront_FILL0_wght400_GRAD0_opsz24.png",
     };
     const companyTabs = [
         { name: "Home", icon: "", id: 0 },
@@ -36,7 +36,7 @@ const Sidebar = ({ modalRef }) => {
                         <div className={sidebarStyles.companyThumbnail}>
                             <img
                                 src={companyDetails.companyThumbnail}
-                                alt="Nishyant logo"
+                                alt="Logo"
                             />
                         </div>
                     </div>
@@ -47,15 +47,15 @@ const Sidebar = ({ modalRef }) => {
                                 {companyDetails.companyName}
                             </div>
 
-                            <a
+                            {/* <a
                                 href={companyDetails.companyLink}
                                 className={sidebarStyles.companyLink}>
-                            </a>
+                            </a> */}
                         </div>
 
-                        <div className={sidebarStyles.companyTabsToggle}>
+                        {/* <div className={sidebarStyles.companyTabsToggle}>
                             <IconChevronDown color="#fff" />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

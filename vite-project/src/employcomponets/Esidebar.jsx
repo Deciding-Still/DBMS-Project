@@ -50,9 +50,9 @@ const Esidebar = ({ modalRef }) => {
                             </a>
                         </div>
 
-                        <div className={sidebarStyles.companyTabsToggle}>
+                        {/* <div className={sidebarStyles.companyTabsToggle}>
                             <IconChevronDown color="#fff" />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

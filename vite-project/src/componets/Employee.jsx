@@ -7,7 +7,7 @@ import axios from "axios";
 const Employee = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [Data, setData] = useState("");
-  const [Name, setName] = useState("");
+  const [List, setList] = useState([]);
   const handleOpenModal = () => {
     setIsOpen(true);
   };
@@ -17,19 +17,21 @@ const Employee = () => {
   };
   const set = () => {
     const userData = { Name: Data };
-    axios.post("http://localhost:3001/users/all", userData,{
-      headers: {
-        "Content-Type": "application/json",
-      }
-    }).then((response) => {
-      // console.log(response.data[0].Name);
-      setName(response.data[0].Name);
-    });
+    axios
+      .post("http://localhost:3001/users/all", userData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        // console.log(response.data[0].Name);
+        setList(response.data);
+      });
   };
 
   return (
     <>
-      <div className="font-semi-bold">Employee</div>
+      <div className="font-semi-bold"></div>
       <button
         onClick={handleOpenModal}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -68,13 +70,28 @@ const Employee = () => {
         </div>
       </div>
       <div className="grid gap-4 md:gap-8">
-        <div className="flex items-center p-4 rounded-lg bg-gray-100 ">
-          <UserIcon className="h-6 w-6" />
-          <span className="ml-4 font-medium">{Name}</span>
-          <button className="ml-auto rounded-full" size="icon" variant="ghost">
-            <TrashIcon className="w-4 h-4" />
-          </button>
-        </div>
+        {List.map(
+          (
+            name,
+            index // Changed from Name to Names
+          ) => (
+            <div
+              key={index}
+              className="justify-start p-4 rounded-lg bg-gray-100"
+            >
+              {/* <UserIcon className="h-6 w-6 mx-2" /> */}
+              <div className="font-medium">Username: {name.username}</div>
+              <div className="font-medium ml-auto">Name: {name.Name}</div>
+              <div className="font-medium ml-auto">Role: {name.role}</div>
+              <div className="font-medium ml-auto">
+                Branch Number: {name.bid}
+              </div>
+              {/* <button className="ml-auto rounded-full" size="icon" variant="ghost">
+              <TrashIcon className="w-4 h-4 " />
+            </button> */}
+            </div>
+          )
+        )}
       </div>
     </>
   );
@@ -139,7 +156,6 @@ function UserIcon(props) {
     >
       <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
       <circle cx="12" cy="7" r="4" />
-          
     </svg>
   );
 }
