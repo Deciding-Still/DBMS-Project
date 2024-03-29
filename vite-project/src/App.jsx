@@ -68,6 +68,7 @@ import GlassCardForm from './componets/GlassCardForm'
 import { ReactTyped } from 'react-typed';
 // import { Routes, Route } from 'react-router-dom'
 import RoleToggle from './componets/RoleToggle';
+import AboutUsPage from './componets/Aboutus';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -78,6 +79,7 @@ function App() {
       {/* Routes */}
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path="/about" element={<AboutUsPage />} />
         <Route path='/employee/*' element={<EmployeeRoutes />} />
         <Route path='/admin/*' element={<AdminRoutes />} />
       </Routes>
@@ -94,8 +96,8 @@ function Home() {
       <nav className="bg-gray-800 p-4 flex justify-end">
         <div className="flex justify-center items-center">
           <a href="#" className="text-white mr-8 hover:text-teal-400 ">Home</a>
-          <a href="#" className="text-white mr-8 hover:text-teal-400 ">Contacts</a>
-          <a href="#" className="text-white mr-8 hover:text-teal-400 ">About Us</a>
+          {/* <a href="#" className="text-white mr-8 hover:text-teal-400 ">Contacts</a> */}
+          <a href="/about" className="text-white mr-8 hover:text-teal-400">About Us</a>
           <GlassCardForm isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
       </nav>
