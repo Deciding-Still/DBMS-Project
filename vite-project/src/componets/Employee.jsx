@@ -1,12 +1,13 @@
-// 
-import React, { useState } from 'react';
-import AddProductForm from './Addproduct';
+import React, { useState } from "react";
+import AddProductForm from "./Addproduct";
 import { IconSearch, IconMenu2 } from "@tabler/icons-react";
-import Addemployee from './Addemployee';
+import Addemployee from "./Addemployee";
+import axios from "axios";
 
 const Employee = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [Data, setData] = useState("");
+  const [Name, setName] = useState("");
   const handleOpenModal = () => {
     setIsOpen(true);
   };
@@ -14,24 +15,38 @@ const Employee = () => {
   const handleCloseModal = () => {
     setIsOpen(false);
   };
+  const set = () => {
+    const userData = { Name: Data };
+    axios.post("http://localhost:3001/users/all", userData,{
+      headers: {
+        "Content-Type": "application/json",
+      }
+    }).then((response) => {
+      // console.log(response.data[0].Name);
+      setName(response.data[0].Name);
+    });
+  };
 
   return (
     <>
-      <div className="font-semi-bold">
-        Employee
-      </div>
-      <button onClick={handleOpenModal} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <div className="font-semi-bold">Employee</div>
+      <button
+        onClick={handleOpenModal}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
         Add New Employee
       </button>
       {isOpen && (
         <div className="modal  ">
           <div className="modal-content ">
-            <span className="close" onClick={handleCloseModal}>&times;</span>
+            <span className="close" onClick={handleCloseModal}>
+              &times;
+            </span>
             <Addemployee onSubmit={handleCloseModal} />
           </div>
         </div>
       )}
-      <div className='  p-3 gap-1'>
+      <div className="  p-3 gap-1">
         <div className="container flex items-center justify-between  bg-slate-100 h-10 px-4 border-b border-gray-200 shadow-sm rounded-md">
           <div className="flex items-center gap">
             <span className="text-gray-400 cursor-pointer">
@@ -41,15 +56,90 @@ const Employee = () => {
               type="text"
               className="flex-grow h-full bg-transparent pl-4 focus:outline-none text-sm placeholder-gray-400"
               placeholder="Search for a Employee"
+              id="Data"
+              value={Data}
+              onChange={(e) => setData(e.target.value)}
+              required
             />
           </div>
+          <button className="border-t-indigo-500" onClick={set}>
+            Search
+          </button>
         </div>
       </div>
-      <div>
-        hello
+      <div className="grid gap-4 md:gap-8">
+        <div className="flex items-center p-4 rounded-lg bg-gray-100 ">
+          <UserIcon className="h-6 w-6" />
+          <span className="ml-4 font-medium">{Name}</span>
+          <button className="ml-auto rounded-full" size="icon" variant="ghost">
+            <TrashIcon className="w-4 h-4" />
+          </button>
+        </div>
       </div>
     </>
   );
 };
 
 export default Employee;
+
+function SearchIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
+    </svg>
+  );
+}
+
+function TrashIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 6h18" />
+      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+    </svg>
+  );
+}
+
+function UserIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+          
+    </svg>
+  );
+}

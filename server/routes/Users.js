@@ -30,7 +30,7 @@ router.post('/add', async (req, res) => {
     res.json(user);
 });
 
-router.get('/all', async (req, res) => {
+router.post('/all', async (req, res) => {
     const users = await Users.findAll({
         attributes: ['username','Name' , 'role', 'bid'],
         where: {
