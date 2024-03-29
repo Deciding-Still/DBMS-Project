@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const AddProductForm = () => {
   const [productID, setProductID] = useState('');
@@ -9,7 +10,22 @@ const AddProductForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here (e.g., send data to server)
-    console.log('Form submitted:', {productID ,productName, productPrice, quantity});
+    const productData = {
+      productID: productID,
+      productName: productName,
+      productPrice: productPrice,
+      productStock: quantity
+    };
+
+    axios.post('http://localhost:3001/products/add', productData, { 
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.error('Error during login:', error);
+    });
     // Clear form fields after submission
     setProductID('');
     setProductName('');

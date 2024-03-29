@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { Branch } = require('../models');
+const { Sales } = require('../models');
 
 router.post('/add', async (req, res) => {
-    const branch = req.body;
-    await Branch.create(branch);
-    res.json(branch);
+    const sale = req.body;
+    await Sales.create(sale);
+    res.json(sale);
 });
 
 module.exports = router;

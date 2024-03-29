@@ -10,8 +10,17 @@ const db = require('./models');
 const userRouter = require('./routes/Users');
 app.use('/users', userRouter);
 
+const productRouter = require('./routes/Products');
+app.use('/products', productRouter);
+
 const branchRouter = require('./routes/Branch');
 app.use('/branches', branchRouter);
+
+const customerRouter = require('./routes/Customer');
+app.use('/customers', customerRouter);
+
+const saleRouter = require('./routes/Sales');
+app.use('/sales', saleRouter);
 
 db.sequelize.sync().then(() => {
   app.listen(3001, () => {

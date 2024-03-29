@@ -19,10 +19,10 @@ const Sidebar = ({ modalRef }) => {
         { name: "Products", icon: "products.png", id: 2 },
         { name: "Customer", icon: "delivery.png", id: 3 },
         { name: "Employee", icon: "marketing.png", id: 4 },
-        { name: "Analytics", icon: "analytics.png", id: 5 },
-        { name: "Payments", icon: "payments.png", id: 6 },
+        // { name: "Analytics", icon: "analytics.png", id: 5 },
+        // { name: "Payments", icon: "payments.png", id: 6 },
 
-        { name: "Discounts", icon: "discounts.png", id: 7 },
+        // { name: "Discounts", icon: "discounts.png", id: 7 },
 
         { name: "Branch", icon: "appearance.png", id: 8 },
 

@@ -19,7 +19,7 @@ const Esidebar = ({ modalRef }) => {
         { name: "Products", icon: "products.png", id: 2 },
         { name: "Customer", icon: "delivery.png", id: 3 },
 
-        { name: "Discounts", icon: "discounts.png", id: 4 },
+        // { name: "Discounts", icon: "discounts.png", id: 4 },
 
 
 
