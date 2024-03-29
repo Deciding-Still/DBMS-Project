@@ -9,22 +9,21 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = ({ modalRef }) => {
     const companyDetails = {
-        companyName: "NITK Store",
-        companyLink: "link-to-company",
-        companyThumbnail: "companythumbnail.png",
+        companyName: "XYZ Stores",
+        companyThumbnail: "./src/assets/storefront_FILL0_wght400_GRAD0_opsz24.png",
     };
     const companyTabs = [
-        { name: "Home", icon: "home.png", id: 0 },
-        { name: "Sales", icon: "home.png", id: 1 },
-        { name: "Products", icon: "products.png", id: 2 },
-        { name: "Customer", icon: "delivery.png", id: 3 },
-        { name: "Employee", icon: "marketing.png", id: 4 },
+        { name: "Home", icon: "", id: 0 },
+        { name: "Sales", icon: "", id: 1 },
+        { name: "Products", icon: "", id: 2 },
+        { name: "Customer", icon: "", id: 3 },
+        { name: "Employee", icon: "", id: 4 },
         // { name: "Analytics", icon: "analytics.png", id: 5 },
         // { name: "Payments", icon: "payments.png", id: 6 },
 
         // { name: "Discounts", icon: "discounts.png", id: 7 },
 
-        { name: "Branch", icon: "appearance.png", id: 8 },
+        { name: "Branch", icon: "", id: 8 },
 
     ];
 

@@ -4,7 +4,7 @@ import AddProductForm from './Addproduct';
 import { IconSearch, IconMenu2 } from "@tabler/icons-react";
 import Addemployee from './Addemployee';
 
-const  Employee = () => {
+const Employee = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -31,19 +31,19 @@ const  Employee = () => {
           </div>
         </div>
       )}
-       <div className='  p-3 gap-1'>
-      <div className="container flex items-center justify-between  bg-slate-100 h-10 px-4 border-b border-gray-200 shadow-sm rounded-md">
-      <div className="flex items-center gap">
-        <span className="text-gray-400 cursor-pointer">
-          <IconSearch size="16" color="currentColor" />
-        </span>
-        <input
-          type="text"
-          className="flex-grow h-full bg-transparent pl-4 focus:outline-none text-sm placeholder-gray-400"
-          placeholder="Search for a Employee"
-        />
-      </div>
-      </div>
+      <div className='  p-3 gap-1'>
+        <div className="container flex items-center justify-between  bg-slate-100 h-10 px-4 border-b border-gray-200 shadow-sm rounded-md">
+          <div className="flex items-center gap">
+            <span className="text-gray-400 cursor-pointer">
+              <IconSearch size="16" color="currentColor" />
+            </span>
+            <input
+              type="text"
+              className="flex-grow h-full bg-transparent pl-4 focus:outline-none text-sm placeholder-gray-400"
+              placeholder="Search for a Employee"
+            />
+          </div>
+        </div>
       </div>
       <div>
         hello

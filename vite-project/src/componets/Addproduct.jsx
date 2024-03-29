@@ -41,7 +41,7 @@ const AddProductForm = () => {
           <label htmlFor="productName">Product ID:</label>
           <input
           className="input input-bordered input-primary w-full rounded-2xl max-w-xs"
-            type="text"
+            type="number"
             id="productID"
             value={productID}
             onChange={(e) => setProductID(e.target.value)}
