@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const router = express.Router();
 const { Users } = require('../models');
 const { and } = require('sequelize');
+const { Op } = require("sequelize");
 
 router.post('/login', async (req, res) => {
     const users = await Users.findAll({
@@ -27,6 +28,18 @@ router.post('/add', async (req, res) => {
     user.password = crypto.createHash('md5').update(user.password).digest('hex');
     await Users.create(user);
     res.json(user);
+});
+
+router.get('/all', async (req, res) => {
+    const users = await Users.findAll({
+        attributes: ['username','Name' , 'role', 'bid'],
+        where: {
+            Name: {
+                [Op.substring]: req.body.Name
+            }
+        }
+    });
+    res.json(users);
 });
 
 module.exports = router;
