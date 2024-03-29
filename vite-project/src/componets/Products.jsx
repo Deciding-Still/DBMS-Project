@@ -43,7 +43,9 @@ const Products = () => {
         />
       </div>
       <div className="flex gap-3">
-        {/* Add your headerRight component here */}
+        <div>
+          hello
+        </div>
       </div>
     </div>
     </div>

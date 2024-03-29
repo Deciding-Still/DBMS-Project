@@ -1,45 +1,46 @@
 import React, { useState } from 'react';
 
 const Addbranch = () => {
-  const [productName, setProductName] = useState('');
+  const [bid, setbid] = useState('');
   const [branch, setBranch] = useState('');
-  const [description, setDescription] = useState('');
-  const [quantity, setQuantity] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here (e.g., send data to server)
     console.log('Form submitted:', { productName, branch, description, quantity });
     // Clear form fields after submission
-    setProductName('');
+    setbid('');
     setBranch('');
-    setDescription('');
-    setQuantity('');
   };
 
   return (
     <div className=' card w-96 bg-base-100 shadow-xl rounded-2xl bg-slate-300'>
       <h2 className='card-title'>Add New Branch</h2>
       <form onSubmit={handleSubmit}>
+      <div>
+          <label htmlFor="bid">Branch ID:</label>
+        </div>
         <div>
-          <label htmlFor="productName">Branch Name:</label>
           <input
             className="input input-bordered input-primary w-full rounded-2xl max-w-xs"
-            type="text"
-            id="productName"
-            value={productName}
-            onChange={(e) => setProductName(e.target.value)}
+            type="positive"
+            id="bid"
+            value={username}
+            onChange={(e) => setUserName(e.target.value)}
             required
           />
         </div>
 
         <div>
-          <label htmlFor="description">Description:</label>
-          <textarea
-            className="input input-bordered rounded-2xl input-primary w-full max-w-xs"
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+          <label htmlFor="EmpName">Name:</label>
+        </div>
+        <div>
+          <input
+            className="input input-bordered input-primary w-full rounded-2xl max-w-xs"
+            type="text"
+            id="Name"
+            value={EmployeeName}
+            onChange={(e) => setEmployeeName(e.target.value)}
             required
           />
         </div>

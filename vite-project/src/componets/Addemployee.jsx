@@ -1,57 +1,122 @@
-import React, { useState } from 'react';
-import Customer from './Customer';
+import React, { useState } from "react";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Customer from "./Customer";
 
 const Addemployee = () => {
-  const [CustomerName, setCustomerName] = useState('');
-  const [branch, setBranch] = useState('');
-  const [description, setDescription] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const [EmployeeName, setEmployeeName] = useState("");
+  const [branch, setBranch] = useState("");
+  const [Password, setPassword] = useState("");
+  const [username, setUserName] = useState("");
+  const [role, setRole] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here (e.g., send data to server)
-    console.log('Form submitted:', { productName, branch, description, quantity });
+    const userData = {
+      username: username,
+      Name: EmployeeName,
+      password: Password,
+      role: role,
+      bid: branch
+    };
+
+    axios.post('http://localhost:3001/users/add', userData, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.error('Error during login:', error);
+    });
+
     // Clear form fields after submission
-    setCustomerName('');
-    setBranch('');
-    setDescription('');
-    setQuantity('');
+    setEmployeeName("");
+    setBranch("");
+    setPassword("");
+    setUserName("");
+    setRole("");
   };
 
   return (
-    <div className=' card w-96 bg-base-100 shadow-xl rounded-2xl bg-slate-300'>
-      <h2 className='card-title'>Add New Employee</h2>
+    <div className=" card w-96 bg-base-100 shadow-xl rounded-2xl bg-slate-300">
+      <h2 className="card-title">Add New Employee</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="productName">Employee Name:</label>
+          <label htmlFor="Username">Username:</label>
+        </div>
+        <div>
           <input
             className="input input-bordered input-primary w-full rounded-2xl max-w-xs"
             type="text"
-            id="CustomerName"
-            value={CustomerName}
-            onChange={(e) => setProductName(e.target.value)}
+            id="username"
+            value={username}
+            onChange={(e) => setUserName(e.target.value)}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="EmpName">Name:</label>
+        </div>
+        <div>
+          <input
+            className="input input-bordered input-primary w-full rounded-2xl max-w-xs"
+            type="text"
+            id="Name"
+            value={EmployeeName}
+            onChange={(e) => setEmployeeName(e.target.value)}
             required
           />
         </div>
         <div>
-          <label htmlFor="branch">Select Branch:</label>
-          <select
-            className='rounded-2xl input input-bordered input-primary w-full max-w-xs'
+          <label htmlFor="Password">Password:</label>
+        </div>
+        <div>
+          <input
+            className="input input-bordered input-primary w-full rounded-2xl max-w-xs"
+            type="text"
+            id="pass"
+            value={Password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="Role">Role:</label>
+        </div>
+        <div>
+          <input
+            className="input input-bordered input-primary w-full rounded-2xl max-w-xs"
+            type="text"
+            id="role"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="Branch">Branch:</label>
+        </div>
+        <div>
+          <input
+            className="input input-bordered input-primary w-full rounded-2xl max-w-xs"
+            type="number"
             id="branch"
             value={branch}
             onChange={(e) => setBranch(e.target.value)}
             required
-          >
-            <option value="">Select a branch</option>
-            {/* Replace this with your branch options */}
-            <option value="branch1">Branch 1</option>
-            <option value="branch2">Branch 2</option>
-          </select>
+          />
         </div>
 
-
         <div className="p-1 text-center">
-          <button className="pl-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Add Employee</button>
+          <button
+            className="pl-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            type="submit"
+          >
+            Add Employee
+          </button>
         </div>
       </form>
     </div>

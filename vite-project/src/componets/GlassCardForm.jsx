@@ -28,18 +28,10 @@ function GlassCardForm() {
         }
       });
 
-      // const response = await fetch('http://localhost:3001/users/login', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify(userData)
-      // });
-
       if (response.data.ok == true) {
         console.log('Login successful!');
         setIsOpen(false); // Close the form after login attempt
-        if (userData.userType == 'employee') {
+        if (userData.role == 'employee') {
           navigate('/employee')
         } else {
           navigate('/admin')
