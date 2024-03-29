@@ -48,7 +48,8 @@ const Layout = ({ children }) => {
 					setIsSideBarOpen={setIsSideBarOpen}
 				/>
 
-				<div className={layoutStyles.children}>{children}</div>
+				<div className={layoutStyles.children}>{children}
+				</div>
 			</div>
 		</div>
 	);

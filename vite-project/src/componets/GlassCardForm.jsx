@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 function GlassCardForm() {
   const [isOpen, setIsOpen] = useState(false);
   const [userType, setUserType] = useState('employee');
-  const navigate = useNavigate()
+  const [stat, setStat] = useState(null); // Initialize stat state
+  const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
@@ -20,7 +21,6 @@ function GlassCardForm() {
       role: userType
     };
 
-    // Send the user data to the backend using fetch
     try {
       const response = await axios.post('http://localhost:3001/users/login', userData, {
         headers: {
@@ -28,22 +28,24 @@ function GlassCardForm() {
         }
       });
 
-      if (response.data.ok == true) {
+      if (response.data.ok === true) {
         console.log('Login successful!');
         setIsOpen(false); // Close the form after login attempt
-        if (userData.role == 'employee') {
-          navigate('/employee')
+        setStat(null); // Reset stat value on successful login
+        if (userData.role === 'employee') {
+          navigate('/employee');
         } else {
-          navigate('/admin')
+          navigate('/admin');
         }
       } else {
+        setStat("Invalid Credentials"); // Update stat state with error message
         console.log(response);
       }
     } catch (error) {
+      setStat("Error during login"); // Update stat state with error message
       console.error('Error during login:', error);
     }
   };
-
 
   const handleUserTypeChange = (event) => {
     setUserType(event.target.value);
@@ -60,11 +62,15 @@ function GlassCardForm() {
       {isOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
           <div className="rounded-lg shadow-2xl shadow-teal-600 shadowbg-opacity-70 backdrop-blur-sm border border-teal-600 px-20 py-20">
-            <h2 className="text-3xl text-white font-medium mb-2">Login <button className="absolute top-3 right-3 text-white text-2xl leading-none hover:text-teal-200"
-              onClick={() => setIsOpen(false)}
-            >
-              &times;
-            </button></h2>
+            <h2 className="text-3xl text-white font-medium mb-2">
+              Login{' '}
+              <button
+                className="absolute top-3 right-3 text-white text-2xl leading-none hover:text-teal-200"
+                onClick={() => setIsOpen(false)}
+              >
+                &times;
+              </button>
+            </h2>
             <div className="form-group text-white mb-3">
               <label htmlFor="username">Username:</label>
               <input
@@ -110,11 +116,14 @@ function GlassCardForm() {
                 Admin
               </label>
             </div>
-            <div className='flex justify-center'>
+            {/* Display stat value if it's not null */}
+            {stat && <div className="text-red-500 mb-2">{stat}</div>}
+            <div className="flex justify-center">
               <button
                 type="submit"
                 className="bg-teal-500 hover:bg-teal-600 text-white rounded-md px-3 py-1 font-medium"
-                onClick={handleLogin}>
+                onClick={handleLogin}
+              >
                 Submit
               </button>
             </div>
@@ -125,5 +134,4 @@ function GlassCardForm() {
   );
 }
 
-// Add this line to export the component
 export default GlassCardForm;
