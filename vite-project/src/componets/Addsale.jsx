@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 const Addsale = () => {
@@ -9,7 +10,22 @@ const Addsale = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here (e.g., send data to server)
-    console.log('Form submitted:', { salesID, productID, customerID, price });
+    const saleData = {
+      salesID: salesID,
+      pid: productID,
+      cid: customerID,
+      price: price
+    };
+
+    axios.post('http://localhost:3001/sales/add', saleData, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.error('Error during login:', error);
+    });
     // Clear form fields after submission
     setcustomerID('');
     setprice('');

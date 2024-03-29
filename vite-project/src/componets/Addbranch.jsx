@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Addbranch = () => {
   const [bid, setbid] = useState('');
@@ -7,7 +8,20 @@ const Addbranch = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here (e.g., send data to server)
-    console.log('Form submitted:', { bid, branchname });
+    const branchData = {
+      branchID: bid,
+      branchName: branchname
+    };
+
+    axios.post('http://localhost:3001/branches/add', branchData, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.error('Error during login:', error);
+    });
     // Clear form fields after submission
     setbid('');
     setBranchName('');

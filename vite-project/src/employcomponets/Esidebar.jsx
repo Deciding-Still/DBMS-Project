@@ -9,9 +9,8 @@ import { Link } from 'react-router-dom';
 
 const Esidebar = ({ modalRef }) => {
     const companyDetails = {
-        companyName: "NITK Store",
-        companyLink: "link-to-company",
-        companyThumbnail: "companythumbnail.png",
+        companyName: "XYZ Stores",
+        companyThumbnail: "../src/assets/storefront_FILL0_wght400_GRAD0_opsz24.png",
     };
     const companyTabs = [
         { name: "Home", icon: "home.png", id: 0 },
@@ -48,7 +47,6 @@ const Esidebar = ({ modalRef }) => {
                             <a
                                 href={companyDetails.companyLink}
                                 className={sidebarStyles.companyLink}>
-                                Visit store
                             </a>
                         </div>
 

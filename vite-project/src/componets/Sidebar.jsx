@@ -50,7 +50,6 @@ const Sidebar = ({ modalRef }) => {
                             <a
                                 href={companyDetails.companyLink}
                                 className={sidebarStyles.companyLink}>
-                                Visit store
                             </a>
                         </div>
 

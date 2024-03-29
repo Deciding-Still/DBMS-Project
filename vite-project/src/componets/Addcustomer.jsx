@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Customer from './Customer';
+import axios from 'axios';
 
 const AddCustomer = () => {
   const [CustomerName, setCustomerName] = useState('');
@@ -8,7 +9,22 @@ const AddCustomer = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here (e.g., send data to server)
-    console.log('Form submitted:', { CustomerName, CustomerID});
+    const customerData = {
+      customerID: CustomerID,
+      customerName: CustomerName
+    };
+
+    axios.post('http://localhost:3001/customers/add', customerData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error('Error during login:', error);
+      });
     // Clear form fields after submission
     setCustomerID('');
     setCustomerName('');

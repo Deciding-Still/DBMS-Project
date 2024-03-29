@@ -43,7 +43,6 @@ const Eheader = ({ isSideBarOpen, setIsSideBarOpen }) => {
 					<img src="headericon2.png" alt="icon2" />
 				</div>
 			</div> */}
-			<p>NITK STORE</p>
 		</div>
 	);
 };
