@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 
 const Addbranch = () => {
   const [bid, setbid] = useState('');
-  const [branch, setBranch] = useState('');
+  const [branchname, setBranchName] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here (e.g., send data to server)
-    console.log('Form submitted:', { productName, branch, description, quantity });
+    console.log('Form submitted:', { bid, branchname });
     // Clear form fields after submission
     setbid('');
-    setBranch('');
+    setBranchName('');
   };
 
   return (
@@ -25,22 +25,22 @@ const Addbranch = () => {
             className="input input-bordered input-primary w-full rounded-2xl max-w-xs"
             type="positive"
             id="bid"
-            value={username}
-            onChange={(e) => setUserName(e.target.value)}
+            value={bid}
+            onChange={(e) => setbid(e.target.value)}
             required
           />
         </div>
 
         <div>
-          <label htmlFor="EmpName">Name:</label>
+          <label htmlFor="branchname">Branch Name:</label>
         </div>
         <div>
           <input
             className="input input-bordered input-primary w-full rounded-2xl max-w-xs"
             type="text"
-            id="Name"
-            value={EmployeeName}
-            onChange={(e) => setEmployeeName(e.target.value)}
+            id="branchname"
+            value={branchname}
+            onChange={(e) => setBranchName(e.target.value)}
             required
           />
         </div>
