@@ -13,10 +13,10 @@ const Esidebar = ({ modalRef }) => {
         companyThumbnail: "../src/assets/storefront_FILL0_wght400_GRAD0_opsz24.png",
     };
     const companyTabs = [
-        { name: "Home", icon: "home.png", id: 0 },
-        { name: "Sales", icon: "home.png", id: 1 },
-        { name: "Products", icon: "products.png", id: 2 },
-        { name: "Customer", icon: "delivery.png", id: 3 },
+        { name: "Home", icon: "", id: 0 },
+        { name: "Sales", icon: "", id: 1 },
+        { name: "Products", icon: "", id: 2 },
+        { name: "Customer", icon: "", id: 3 },
 
         // { name: "Discounts", icon: "discounts.png", id: 4 },
 
@@ -33,7 +33,7 @@ const Esidebar = ({ modalRef }) => {
                         <div className={sidebarStyles.companyThumbnail}>
                             <img
                                 src={companyDetails.companyThumbnail}
-                                alt="Nishyant logo"
+                                alt="NITK LOGO"
                             />
                         </div>
                     </div>

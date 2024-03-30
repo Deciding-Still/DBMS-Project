@@ -1,29 +1,27 @@
 import React from 'react';
 import Spline from '@splinetool/react-spline';
 
-// Sample data for the cards (you can replace this with your actual content)
 const aboutUsData = [
     {
         title: 'Alen Basil Thelappilly',
-        image: 'https://via.placeholder.com/300x200', // Replace with actual image URL
+        image: 'https://via.placeholder.com/300x200', 
         description: 'Backend Guru ! I love doing backend and making the website functional',
     },
     {
         title: 'Rathod Smit Amitkumar',
-        image: 'https://via.placeholder.com/300x200', // Replace with actual image URL
-        description: 'Frontend God ! Creative by birth 😎 Love adding designs and animations to website specially 3D',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Frontend Freak ! Creative by birth 😎 Love adding designs and animations to website specially 3D',
     },
     {
         title: 'Vignesh',
-        image: 'https://via.placeholder.com/300x200', // Replace with actual image URL
+        image: 'https://via.placeholder.com/300x200', 
         description: 'Something of this , something of that ! I love both frontend and backend',
     },
     {
         title: 'Vikas',
-        image: 'https://via.placeholder.com/300x200', // Replace with actual image URL
+        image: 'https://via.placeholder.com/300x200', 
         description: 'I am the concept guy ! I love to come up with new ideas and concepts for the website',
-    },
-    // Add more cards as needed
+    }
 ];
 
 // Card component
